@@ -24,13 +24,13 @@ class CRMInht(models.Model):
 
     def _compute_lead_status(self):
         for i in self:
-          if i.score >=75/100:
+          if i.score >=75:
               i.lead_status="1"
-          if i.score >60/100 and i.score<75/100:
+          if i.score >60 and i.score<75:
               i.lead_status = "2"
-          if i.score >50/100 and i.score<=60/100:
+          if i.score >50 and i.score<=60:
               i.lead_status = "3"
-          if i.score <=50/100:
+          if i.score <=50:
               i.lead_status = "4"
 
     @api.depends("deal_ids.answer_id")
@@ -39,7 +39,7 @@ class CRMInht(models.Model):
             sum=0
             for k in i.deal_ids:
                 sum=sum+k.answer_id.probability
-            i.score=(sum/100)
+            i.score=(sum)
 
 
 
