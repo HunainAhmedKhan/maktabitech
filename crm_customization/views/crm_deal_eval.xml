@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="inh_crm_lead_view_form" model="ir.ui.view">
+            <field name="name">crm.lead.view.form.inherit.event.crm</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_title')]/h2"  position="after">
+                    <field name="lead_status"
+                           decoration-success="lead_status == '1'"
+                           decoration-info="lead_status == '2'"
+                           decoration-warning="lead_status == '3'"
+                           decoration-danger="lead_status == '4'"
+                           widget="badge"/>
+                </xpath>
+
+                <xpath expr="//group[@name='lead_priority']"  position="inside">
+                        <field name="boq_received"/>
+                </xpath>
+
+                <xpath expr="//page[@name='extra']" position="after">
+                    <page string="Deal Evaluations">
+                        <field name="deal_ids" nolabel="1">
+                            <tree string="Deal Evaluations" editable="bottom" nolabel="1">
+                                <field name="question_id" options="{'no_edit': True, 'no_create': True, 'no_open': True}"/>
+                                <field name="answer_id" domain="[('question_id','=',question_id)]" options="{'no_edit': True, 'no_create': True, 'no_open': True}"/>
+                            </tree>
+                        </field>
+                        <group name="note_group" col="6" class="mt-2 mt-md-0">
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <field name="score"  colspan="2" readonly="1"/>
+                            </group>
+                            <div class="clearfix"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="deal_question_tree_view">
+            <field name="name">Deal Questions</field>
+            <field name="model">deal.questions</field>
+            <field name="arch" type="xml">
+                <tree string="Deal Questions">
+                    <field name="name" />
+                    <field name="weight" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="deal_question_form_view">
+            <field name="name">Deal Questions</field>
+            <field name="model">deal.questions</field>
+            <field name="arch" type="xml">
+                <form  string="Deal Questions">
+                    <sheet string="Deal Questions">
+                        <group  string="Deal Questions">
+                            <group>
+                                <field name="name"/>
+                                <field name="weight" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Answers">
+                                <field name="ans_ids" nolabel="1">
+                                    <tree  editable="bottom" nolabel="1">
+                                        <field name="name"/>
+                                        <field name="percentage" />
+                                        <field name="probability" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="deal_question_action">
+            <field name="name">Deal Evaluation</field>
+            <field name="res_model">deal.questions</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="deal_question_action_menu"  parent="crm.crm_menu_config" sequence="1" name="Deal Question" action="deal_question_action"/>
+
+    </data>
+</odoo>

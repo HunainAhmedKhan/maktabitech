@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_deal_evaluation,deal_evaluation_deal_evaluation,model_deal_evaluation,base.group_user,1,1,1,1
+access_deal_questions,deal_questions_deal_questions,model_deal_questions,base.group_user,1,1,1,1
+access_deal_answers,deal_answers_deal_answers,model_deal_answers,base.group_user,1,1,1,1
