@@ -18,6 +18,21 @@
                 <xpath expr="//group[@name='lead_priority']"  position="inside">
                         <field name="boq_received"/>
                 </xpath>
+                                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                 <xpath expr="//field[@name='contact_name']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                    <xpath expr="//field[@name='email_from']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                     <xpath expr="//field[@name='phone']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                     <xpath expr="//field[@name='mobile']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
 
                 <xpath expr="//page[@name='extra']" position="after">
                     <page string="Deal Evaluations">
