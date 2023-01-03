@@ -1,0 +1,117 @@
+<odoo>
+
+        <template id="purchase_order_report_inherit" inherit_id="purchase.report_purchaseorder_document">
+            <xpath expr="//t[@t-set='address']" position="replace">
+                <span>&#160;</span>
+            </xpath>
+            <xpath expr="//div[@class='page']" position="replace">
+                <div class="page" style="margin-top:-25px;">
+                    <div class="oe_structure"/>
+
+                    <table class="table table-sm table-borderless">
+                        <tr>
+                            <td colspan="2" style="border:1px solid black;background-color:#47612b;color:white;"><strong>VENDOR</strong></td>
+                            <td><span>&#160;</span></td>
+                            <td colspan="3" style="border:1px solid black;background-color:#47612b;color:white;"><strong>SHIP TO</strong></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span t-field="o.partner_id.name"/><br/>
+                                CR#<br/>
+                                <span t-field="o.partner_id.city"/><br/>
+                                Phone: <span t-field="o.partner_id.phone"/><br/>
+                                VAT: <span t-field="o.partner_id.vat"/>
+                            </td>
+                            <td><span>&#160;</span></td>
+                            <td colspan="3" >
+                                <span t-field="o.company_id.name"/><br/>
+                                123<br/>
+                                <span t-field="o.company_id.city"/><br/>
+                                <span t-field="o.company_id.street"/><br/>
+                                <span t-field="o.company_id.vat"/>
+                            </td>
+                        </tr>
+                        <tr class="text-center" style="padding:3px;background-color:#47612b;color:white;">
+                            <td style="border:1px solid black;border-right:none;"><strong>Quotation Number</strong></td>
+                            <td style="border:1px solid black;border-right:none;border-left:none;"><strong>SHIP VIA</strong></td>
+                            <td style="border:1px solid black;border-right:none;border-left:none;"><strong>F.O.B</strong></td>
+                            <td colspan="3" style="border:1px solid black;border-left:none;"><strong>SHIPPING TERMS</strong></td>
+                        </tr>
+                        <tr class="text-center">
+                            <td style="border:1px solid black;border-right:none;"><span t-field="o.name"/></td>
+                            <td style="border:1px solid black;"><span t-field="o.name"/></td>
+                            <td style="border:1px solid black;"><span>&#160;</span></td>
+                            <td colspan="3" style="border:1px solid black;border-left:none;"><span t-field="o.payment_term_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">
+                                <span>&#160;</span>
+                            </td>
+                        </tr>
+
+                        <tr style="padding:3px;background-color:#0e253d;color:white;">
+                            <td class="text-center"  style="border:1px solid black;border-right:none;"><strong>Model #</strong></td>
+                            <td colspan="2" class="text-left" style="border:1px solid black;border-right:none;border-left:none;"><strong>DESCRIPTION</strong></td>
+                            <td class="text-center"  style="border:1px solid black;border-right:none;border-left:none;"><strong>QTY</strong></td>
+                            <td class="text-center"  style="border:1px solid black;border-right:none;border-left:none;"><strong>UNIT PRICE</strong></td>
+                            <td class="text-center"  style="border:1px solid black;border-left:none;"><strong>TOTAL</strong></td>
+                        </tr>
+                        <t t-foreach="o.order_line" t-as="line">
+                            <tr>
+                                <td class="text-center" style="border:1px solid black;"><span t-field="line.product_id.default_code"/></td>
+                                <td colspan="2" class="text-left" style="border:1px solid black;"><span t-field="line.product_id.name"/></td>
+                                <td class="text-center" style="border:1px solid black;"><span t-field="line.product_qty"/></td>
+                                <td class="text-center" style="border:1px solid black;"><span t-field="line.price_unit"/></td>
+                                <td class="text-center" style="border:1px solid black;"><span t-field="line.price_subtotal"/></td>
+                            </tr>
+                        </t>
+                        <tr>
+                            <td colspan="5">
+                                <span>&#160;</span>
+                            </td>
+                        </tr>
+                        <tr style="border-top:none;">
+                            <td colspan="3" style="border:1px solid black;background-color:grey"><strong>Remarks</strong></td>
+                            <td style="border-top:2px solid white;;"></td>
+                            <td class="text-center" style="border:1px solid black;"><strong>Subtotal</strong></td>
+                            <td class="text-center" style="border:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        </tr>
+                        <tr >
+                            <td colspan="3" rowspan="3" style="border:1px solid black;"><span t-field="o.notes"/></td>
+                            <td/>
+                            <td class="text-center" style="border:1px solid black;"><strong>TAX</strong></td>
+                            <td class="text-center" style="border:1px solid black;"><span t-field="o.amount_tax"/></td>
+                        </tr>
+                        <tr>
+                            <td/>
+                            <td class="text-center" style="border:1px solid black;"><strong>Total</strong></td>
+                            <td class="text-center" style="border:1px solid black;background-color:#47612b;color:white;"><strong><span t-field="o.amount_total"/></strong></td>
+                        </tr>
+
+                    </table>
+                    <div>Confirmation of Purchase Order<br/><br/>
+                        The above PO is officially acknowledged with receipt unless the supplier reject within 24 hrs
+                        From issuing and sending PORefer to terms and condition of contract.
+                    </div>
+                    <br/><br/><br/><br/>
+                    <table width="100%">
+                        <tr class="text-center">
+                            <td><span>&#160;</span></td>
+                            <td style="width:5%;"><span>&#160;</span></td>
+                            <td style="width:30%;"><img src="/hak_reports/static/stamp.png" class="float-left" alt="Logo" width="70%"/></td>
+                            <td style="width:5%;"><span>&#160;</span></td>
+                            <td style="width:30%;"><span>&#160;</span></td>
+                        </tr>
+                        <tr class="text-center">
+                            <td style="width:30%;border-top:1px solid black;">Prepared By:<span t-field="o.user_id.name"/></td>
+                            <td style="width:5%;"><span>&#160;</span></td>
+                            <td style="width:30%;border-top:1px solid black;">Company Stamp:</td>
+                            <td style="width:5%;"><span>&#160;</span></td>
+                            <td style="width:30%;border-top:1px solid black;">Approved By:<span t-field="o.user_id.name"/></td>
+                        </tr>
+                    </table>
+                </div>
+            </xpath>
+        </template>
+
+</odoo>

@@ -1,0 +1,199 @@
+<odoo>
+
+    <template id="report_inv_proforma_document">
+        <!--        <t t-call="web.external_layout">-->
+        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+            <t t-call="hak_reports.custom_inv_header_footer"/>
+            <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
+            <div class="page">
+                <table class="table table-sm table-borderless text-center">
+                    <tr class="text-center" >
+                        <td rowspan="3"><strong>Customer Name &amp; Address</strong></td>
+                        <td rowspan="3" colspan="3"><div t-field="o.partner_id"
+                                                         t-options='{"widget": "contact", "fields": ["address", "name", "phone", "vat"], "no_marker": True, "phone_icons": True}'/></td>
+                        <td style="border-right:2px solid black;" colspan="2" rowspan="3"><strong>Customer Name &amp; Address</strong></td>
+                        <td style="font-weight:bold;">Invoice No:</td>
+                        <td colspan="3"><span t-field="o.name"/></td>
+                        <td style="font-weight:bold;">Invoice No:</td>
+                    </tr>
+                    <tr class="text-center" >
+                        <td style="font-weight:bold;">Invoice Date &amp; Time:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td style="font-weight:bold;">Invoice Date &amp; Time:</td>
+                    </tr>
+                    <tr class="text-center" >
+                        <td style="font-weight:bold;">Supply Date:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td style="font-weight:bold;">Supply Date:</td>
+                    </tr>
+                    <tr class="text-center" >
+                        <td style="font-weight:bold;">Customer Code:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Customer Code:</td>
+                        <td style="font-weight:bold;" >Reference No:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td style="font-weight:bold;">Reference No:</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td style="font-weight:bold;">Vat No:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Vat No:</td>
+                        <td style="font-weight:bold;">Vat No:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td>VAt No:</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td style="font-weight:bold;">PO/Contract No:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Vat No:</td>
+                        <td style="font-weight:bold;">CR No:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td>VAt No:</td>
+                    </tr>
+                    <tr class="text-center">
+                        <td style="font-weight:bold;">CR/Momra No/ID:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Vat No:</td>
+                        <td style="font-weight:bold;">Contact:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td>VAt No:</td>
+                    </tr>
+                    <tr class="text-center" style="border-bottom:2px solid black;">
+                        <td style="font-weight:bold;">Type of Supply:</td>
+                        <td colspan="3"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Vat No:</td>
+                        <td style="font-weight:bold;"><span>&#160;</span></td>
+                        <td colspan="3"><span>&#160;</span></td>
+                        <td><span>&#160;</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="11">
+                            <span>&#160;</span>
+                        </td>
+                    </tr>
+                    <tr style="padding:3px;background-color:grey;border:1px solid black;">
+                        <th class="text-center"  >Total With VAT</th>
+                        <td class="text-left" ><strong>VAT Amount</strong></td>
+                        <th class="text-center" ><strong>VAT</strong></th>
+                        <th class="text-center" ><strong>Line Total</strong></th>
+                        <th class="text-center"><strong>Discount</strong></th>
+                        <th class="text-center"><strong>Price</strong></th>
+                        <th class="text-center" ><strong>QTY</strong></th>
+                        <th class="text-center" colspan="4"><strong>Description</strong></th>
+                    </tr>
+                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                        <tr style="border-bottom:1px solid black;">
+                            <t t-set="tax_amount" t-value="line.get_tax_amount()"/>
+                            <td class="text-center"><span t-esc="tax_amount+line.price_subtotal"/></td>
+                            <td class="text-left" ><span t-esc="tax_amount"/></td>
+                            <td class="text-left" ><span t-esc="', '.join(map(lambda x: (x.description or x.name), line.tax_ids))" id="line_tax_ids"/></td>
+                            <td class="text-center" ><span t-field="line.price_subtotal"/></td>
+                            <td class="text-center" ><span t-field="line.discount"/></td>
+                            <td class="text-center" ><span t-field="line.price_unit"/></td>
+                            <td class="text-center" ><span t-field="line.quantity"/></td>
+                            <td class="text-center" colspan="4"><span t-field="line.name"/></td>
+                        </tr>
+                    </t>
+                    <tr>
+                        <td colspan="11">
+                            <span>&#160;</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Gross Value</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Gross Value(Arsbic)</td>
+                        <td></td>
+                        <td style="font-weight:bold;border-bottom:none;">Payment Terms:</td>
+                        <td colspan="2"><span t-field="o.invoice_payment_term_id.name"/></td>
+                        <td style="font-weight:bold;">Payment Terms(Arabic)</td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Discount Amount</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Discount Amount(Arsbic)</td>
+                        <td></td>
+                        <td style="font-weight:bold;border-bottom:none;">Payment Method:</td>
+                        <td colspan="2"><span t-field="o.invoice_payment_term_id.name"/></td>
+                        <td style="font-weight:bold;">Payment Method(Arabic)</td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Amount After Discount</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Amount After Discount(Arabic)</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Total VAT</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Total VAT(Arabic)</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr style="font-weight:bold;">
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Total After VAT</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Total After VAT(Arabic)</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Down Payment</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Down Payment(Arabic)</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Down Payment VAT</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Down Payment VAT(Arabic)</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Net VAT</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Net VAT(Arabic)</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr>
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Retention</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Retention(Arabic)</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr style="font-weight:bold;">
+                        <td style="border-bottom:1px solid black;"></td>
+                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid black;" colspan="2">Net Invoice Amount</td>
+                        <td colspan="2" style="border-bottom:1px solid black;">Net Invoice Amount(Arabic)</td>
+                        <td colspan="5"></td>
+                    </tr>
+<!--                    <tr>-->
+<!--                        <td></td>-->
+<!--                        <td></td>-->
+<!--                        <td>Gross Value</td>-->
+<!--                        <td>Gross Value</td>-->
+<!--                    </tr>-->
+                </table>
+            </div>
+        </div>
+        <!--        </t>-->
+    </template>
+
+    <template id="report_invoice_proforma">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="hak_reports.report_inv_proforma_document" t-lang="o.partner_id.lang"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>
