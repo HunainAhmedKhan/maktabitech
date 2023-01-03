@@ -17,8 +17,10 @@
 
                 <xpath expr="//group[@name='lead_priority']"  position="inside">
                         <field name="boq_received"/>
+                        <field name="delivery_date"/>
+                        <field name="lead_ready_status"  decoration-success="lead_status == '1'" decoration-danger="lead_status == '2'" widget="badge"/>
                 </xpath>
-                                <xpath expr="//field[@name='partner_id']" position="attributes">
+                  <xpath expr="//field[@name='partner_id']" position="attributes">
                     <attribute name="required">1</attribute>
                 </xpath>
                  <xpath expr="//field[@name='contact_name']" position="attributes">
@@ -33,6 +35,7 @@
                      <xpath expr="//field[@name='mobile']" position="attributes">
                     <attribute name="required">1</attribute>
                 </xpath>
+
 
                 <xpath expr="//page[@name='extra']" position="after">
                     <page string="Deal Evaluations">

@@ -5,7 +5,7 @@ import requests
 import base64
 import time
 from datetime import datetime, timedelta
-
+from datetime import date, datetime, timedelta
 
 
 class CRMInht(models.Model):
@@ -13,17 +13,27 @@ class CRMInht(models.Model):
 
     deal_ids = fields.One2many('deal.evaluation', 'crm_id', string='Questions')
     score=fields.Float("Score %",compute="compute_the_total_score")
+    delivery_date=fields.Date("Delivery Date",default=lambda self: fields.Datetime.now())
     boq_received=fields.Boolean("Drawings/BOQ Received ?")
     lead_status= fields.Selection([
         ('1', 'Hot Lead and its In Closing Stage'),
         ('2', 'Hot Lead but still need more time / Efforts'),
         ('3', 'Warm Stage'),
-        ('4', 'Cold or Early Stage - Still Not Qualified Lead')], string='Lead Status',
+        ('4', 'Cold or Early Stage - Still Not Qualified Lead')], string='Opportunity Status',
         compute='_compute_lead_status')
+
+    lead_ready_status = fields.Selection([('1', 'On Time'),('2', 'Late')], string='Lead Status')
 
 
     def _compute_lead_status(self):
         for i in self:
+          today = date.today()
+          i.lead_ready_status = '1'
+          if i.delivery_date:
+              print(i.stage_id.name,i.delivery_date,today)
+              if i.delivery_date<today and i.stage_id.name=="New":
+                  i.lead_ready_status='2'
+
           if i.score >=75:
               i.lead_status="1"
           if i.score >60 and i.score<75:
