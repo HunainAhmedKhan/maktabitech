@@ -6,62 +6,62 @@
             <t t-call="hak_reports.custom_inv_header_footer"/>
             <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
             <div class="page">
-                <table class="table table-sm table-borderless text-center">
-                    <tr class="text-center" >
+                <table class="table table-sm table-borderless text-left" style="font-size:13px;">
+                    <tr >
                         <td rowspan="3"><strong>Customer Name &amp; Address</strong></td>
-                        <td rowspan="3" colspan="3"><div t-field="o.partner_id"
+                        <td rowspan="3" class="text-center" colspan="3"><div t-field="o.partner_id"
                                                          t-options='{"widget": "contact", "fields": ["address", "name", "phone", "vat"], "no_marker": True, "phone_icons": True}'/></td>
-                        <td style="border-right:2px solid black;" colspan="2" rowspan="3"><strong>Customer Name &amp; Address</strong></td>
+                        <td style="border-right:2px solid #4fc5f0;font-weight:bold;" class="text-right text-nowrap" colspan="2" rowspan="3">: وعنوانه العميل اسم </td>
                         <td style="font-weight:bold;">Invoice No:</td>
-                        <td colspan="3"><span t-field="o.name"/></td>
-                        <td style="font-weight:bold;">Invoice No:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.name"/></td>
+                        <td class="text-right" style="font-weight:bold;">:رقم الفاتورة</td>
                     </tr>
-                    <tr class="text-center" >
+                    <tr>
                         <td style="font-weight:bold;">Invoice Date &amp; Time:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td style="font-weight:bold;">Invoice Date &amp; Time:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td class="text-right" style="font-weight:bold;">:تاريخ ووقت الفاتورة</td>
                     </tr>
-                    <tr class="text-center" >
+                    <tr>
                         <td style="font-weight:bold;">Supply Date:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td style="font-weight:bold;">Supply Date:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="font-weight:bold;">:تاريخ التوريد</td>
                     </tr>
-                    <tr class="text-center" >
+                    <tr>
                         <td style="font-weight:bold;">Customer Code:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Customer Code:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid #4fc5f0;font-weight:bold;" class="text-right" colspan="2" >كود العميل</td>
                         <td style="font-weight:bold;" >Reference No:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td style="font-weight:bold;">Reference No:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="font-weight:bold;">:رقم المرجع</td>
                     </tr>
-                    <tr class="text-center">
+                    <tr >
                         <td style="font-weight:bold;">Vat No:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Vat No:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid #4fc5f0;font-weight:bold;" colspan="2" >:الضريبي الرقم</td>
                         <td style="font-weight:bold;">Vat No:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td>VAt No:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="font-weight:bold;">:الضريبي الرقم</td>
                     </tr>
-                    <tr class="text-center">
+                    <tr>
                         <td style="font-weight:bold;">PO/Contract No:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Vat No:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid #4fc5f0;font-weight:bold;" colspan="2" >:الشراء طلب رقم</td>
                         <td style="font-weight:bold;">CR No:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td>VAt No:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="font-weight:bold;">:التجاري السجل رقم</td>
                     </tr>
-                    <tr class="text-center">
+                    <tr>
                         <td style="font-weight:bold;">CR/Momra No/ID:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Vat No:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid #4fc5f0;font-weight:bold;" colspan="2" >التجاري السجل رقم</td>
                         <td style="font-weight:bold;">Contact:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td>VAt No:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="font-weight:bold;">:االتصال جهة</td>
                     </tr>
-                    <tr class="text-center" style="border-bottom:2px solid black;">
+                    <tr style="border-bottom:2px solid #4fc5f0;">
                         <td style="font-weight:bold;">Type of Supply:</td>
-                        <td colspan="3"><span t-field="o.invoice_date"/></td>
-                        <td style="border-right:2px solid black;font-weight:bold;" colspan="2" >Vat No:</td>
+                        <td colspan="3" class="text-center"><span t-field="o.invoice_date"/></td>
+                        <td style="border-right:2px solid #4fc5f0;font-weight:bold;" class="text-right" colspan="2" >:نوع التوريد</td>
                         <td style="font-weight:bold;"><span>&#160;</span></td>
                         <td colspan="3"><span>&#160;</span></td>
                         <td><span>&#160;</span></td>
@@ -71,18 +71,18 @@
                             <span>&#160;</span>
                         </td>
                     </tr>
-                    <tr style="padding:3px;background-color:grey;border:1px solid black;">
-                        <th class="text-center"  >Total With VAT</th>
-                        <td class="text-left" ><strong>VAT Amount</strong></td>
-                        <th class="text-center" ><strong>VAT</strong></th>
-                        <th class="text-center" ><strong>Line Total</strong></th>
-                        <th class="text-center"><strong>Discount</strong></th>
-                        <th class="text-center"><strong>Price</strong></th>
-                        <th class="text-center" ><strong>QTY</strong></th>
-                        <th class="text-center" colspan="4"><strong>Description</strong></th>
+                    <tr style="padding:3px;background-color:#dbdbd9;border:1px solid #4fc5f0;">
+                        <th class="text-center">الضريبة شامل<br/>Total With VAT</th>
+                        <td class="text-left"><strong>الضريبة قيمة<br/>VAT Amount</strong></td>
+                        <th class="text-center"><strong>الضريبة<br/>VAT</strong></th>
+                        <th class="text-center"><strong>االجمالى<br/>Line Total</strong></th>
+                        <th class="text-center"><strong>خصم<br/>Discount</strong></th>
+                        <th class="text-center"><strong>السعر<br/>Price</strong></th>
+                        <th class="text-center" ><strong>الكمية<br/>QTY</strong></th>
+                        <th class="text-right" colspan="4">الوصف<br/>Description</th>
                     </tr>
                     <t t-foreach="o.invoice_line_ids" t-as="line">
-                        <tr style="border-bottom:1px solid black;">
+                        <tr style="border-bottom:1px solid #4fc5f0;">
                             <t t-set="tax_amount" t-value="line.get_tax_amount()"/>
                             <td class="text-center"><span t-esc="tax_amount+line.price_subtotal"/></td>
                             <td class="text-left" ><span t-esc="tax_amount"/></td>
@@ -91,7 +91,7 @@
                             <td class="text-center" ><span t-field="line.discount"/></td>
                             <td class="text-center" ><span t-field="line.price_unit"/></td>
                             <td class="text-center" ><span t-field="line.quantity"/></td>
-                            <td class="text-center" colspan="4"><span t-field="line.name"/></td>
+                            <td class="text-right" colspan="4"><span t-field="line.name"/></td>
                         </tr>
                     </t>
                     <tr>
@@ -100,88 +100,104 @@
                         </td>
                     </tr>
 
-                    <tr>
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Gross Value</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Gross Value(Arsbic)</td>
+                    <tr style="font-size:12px;">
+                        <td style="border-bottom:1px solid #4fc5f0;"></td>
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;" colspan="2">Gross Value</td>
+                        <td colspan="2" style="border-bottom:1px solid #4fc5f0;">:االجمالية القيمة</td>
                         <td></td>
-                        <td style="font-weight:bold;border-bottom:none;">Payment Terms:</td>
-                        <td colspan="2"><span t-field="o.invoice_payment_term_id.name"/></td>
-                        <td style="font-weight:bold;">Payment Terms(Arabic)</td>
+                        <td class="text-nowrap" style="font-weight:bold;border-bottom:none;">Payment Terms:</td>
+                        <td class="text-nowrap" colspan="2"><span t-field="o.invoice_payment_term_id.name"/></td>
+                        <td class="text-nowrap" style="font-weight:bold;">الدفع شروط</td>
                     </tr>
-                    <tr>
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Discount Amount</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Discount Amount(Arsbic)</td>
+                    <tr style="font-size:12px;">
+                        <td style="border-bottom:1px solid #4fc5f0;"></td>
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;" colspan="2">Discount Amount</td>
+                        <td colspan="2" style="border-bottom:1px solid #4fc5f0;">: الخصم مقدار</td>
                         <td></td>
-                        <td style="font-weight:bold;border-bottom:none;">Payment Method:</td>
-                        <td colspan="2"><span t-field="o.invoice_payment_term_id.name"/></td>
-                        <td style="font-weight:bold;">Payment Method(Arabic)</td>
+                        <td class="text-nowrap" style="font-weight:bold;border-bottom:none;">Payment Method:</td>
+                        <td class="text-nowrap" colspan="2"><span t-field="o.invoice_payment_term_id.name"/></td>
+                        <td class="text-nowrap" style="font-weight:bold;">الدفع نوع</td>
+                    </tr>
+                    <tr style="font-size:12px;">
+                        <td style="border-bottom:1px solid #4fc5f0;"></td>
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;" colspan="2">Amount After Discount</td>
+                        <td colspan="2" style="border-bottom:1px solid #4fc5f0;">: الخصم بعد المبلغ</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr style="font-size:12px;">
+                        <td style="border-bottom:1px solid #4fc5f0;"></td>
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;" colspan="2">Total VAT</td>
+                        <td colspan="2" style="border-bottom:1px solid #4fc5f0;">: الضريبة اجمالى</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr style="font-weight:bold;font-size:12px;">
+                        <td style="border-bottom:1px solid #4fc5f0;font-weight:bold;" class="text-left"><span t-field="o.currency_id.name"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;font-weight:bold;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;font-weight:bold;" colspan="2" class="text-left"><div class="text-left">Total After VAT</div></td>
+                        <td colspan="2" style="border-bottom:1px solid #4fc5f0;font-weight:bold;">: الضريبة بعد اجمالى</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr style="font-size:12px;">
+                        <td style="border-bottom:1px solid #4fc5f0;"></td>
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;" colspan="2">Down Payment</td>
+                        <td colspan="2" style="border-bottom:1px solid #4fc5f0;">: مقدمة دفعات</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr style="font-size:12px;">
+                        <td style="border-bottom:1px solid #4fc5f0;"></td>
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;" colspan="2">Down Payment VAT</td>
+                        <td colspan="2" style="border-bottom:1px solid #4fc5f0;">: المقدمة الدفعة ضريبة</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr style="font-size:12px;">
+                        <td style="border-bottom:1px solid #4fc5f0;"></td>
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;" colspan="2">Net VAT</td>
+                        <td colspan="2" style="border-bottom:1px solid #4fc5f0;">: الضريبة صافى</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr style="font-size:12px;">
+                        <td style="border-bottom:1px solid #4fc5f0;"></td>
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;" colspan="2">Retention</td>
+                        <td colspan="2" style="border-bottom:1px solid #4fc5f0;">: التنفيذ حسن حجوزات</td>
+                        <td colspan="5"></td>
+                    </tr>
+                    <tr style="font-weight:bold;font-size:12px;font-weight:bold;">
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.currency_id.name"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;"><span t-field="o.amount_untaxed"/></td>
+                        <td style="border-bottom:1px solid #4fc5f0;" colspan="2">Net Invoice Amount</td>
+                        <td colspan="2"  style="border-bottom:1px solid #4fc5f0;font-weight:bold;">المبلغ صافى</td>
+                        <td colspan="6"></td>
                     </tr>
                     <tr>
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Amount After Discount</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Amount After Discount(Arabic)</td>
-                        <td colspan="5"></td>
+                        <td colspan="11">
+                            <span>&#160;</span>
+                        </td>
                     </tr>
-                    <tr>
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Total VAT</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Total VAT(Arabic)</td>
-                        <td colspan="5"></td>
-                    </tr>
-                    <tr style="font-weight:bold;">
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Total After VAT</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Total After VAT(Arabic)</td>
-                        <td colspan="5"></td>
-                    </tr>
-                    <tr>
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Down Payment</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Down Payment(Arabic)</td>
-                        <td colspan="5"></td>
-                    </tr>
-                    <tr>
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Down Payment VAT</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Down Payment VAT(Arabic)</td>
-                        <td colspan="5"></td>
-                    </tr>
-                    <tr>
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Net VAT</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Net VAT(Arabic)</td>
-                        <td colspan="5"></td>
-                    </tr>
-                    <tr>
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Retention</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Retention(Arabic)</td>
-                        <td colspan="5"></td>
-                    </tr>
-                    <tr style="font-weight:bold;">
-                        <td style="border-bottom:1px solid black;"></td>
-                        <td style="border-bottom:1px solid black;"><span t-field="o.amount_untaxed"/></td>
-                        <td style="border-bottom:1px solid black;" colspan="2">Net Invoice Amount</td>
-                        <td colspan="2" style="border-bottom:1px solid black;">Net Invoice Amount(Arabic)</td>
-                        <td colspan="5"></td>
-                    </tr>
-<!--                    <tr>-->
-<!--                        <td></td>-->
-<!--                        <td></td>-->
+                    <tr style="font-size:13px;"  class="text-left">
+                        <td colspan="5" class="text-left">
+                            <div style="text-align:left;">
+                            All payments to be made to:<br/>
+                            Account No: 225137484450008<br/>
+                            IBAN No: SA201500445137484450008<br/>
+                            Bank Albilad<br/>
+                            Swift Code: ALBISARIXXX<br/></div>
+                        </td>
+                        <td style="border:none;" colspan="6" class="text-right">
+                            <div style="text-align:right;">
+
+                            </div>
+                        </td>
 <!--                        <td>Gross Value</td>-->
 <!--                        <td>Gross Value</td>-->
-<!--                    </tr>-->
+                    </tr>
                 </table>
             </div>
         </div>

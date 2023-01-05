@@ -72,19 +72,19 @@
                         </tr>
                         <tr style="border-top:none;">
                             <td colspan="3" style="border:1px solid black;background-color:grey"><strong>Remarks</strong></td>
-                            <td style="border-top:2px solid white;;"></td>
-                            <td class="text-center" style="border:1px solid black;"><strong>Subtotal</strong></td>
+                            <td style="border-top:2px solid white;"></td>
+                            <td class="text-center" style="border-top:1px solid white;"><strong>Subtotal</strong></td>
                             <td class="text-center" style="border:1px solid black;"><span t-field="o.amount_untaxed"/></td>
                         </tr>
                         <tr >
                             <td colspan="3" rowspan="3" style="border:1px solid black;"><span t-field="o.notes"/></td>
                             <td/>
-                            <td class="text-center" style="border:1px solid black;"><strong>TAX</strong></td>
+                            <td class="text-center" ><strong>TAX</strong></td>
                             <td class="text-center" style="border:1px solid black;"><span t-field="o.amount_tax"/></td>
                         </tr>
                         <tr>
                             <td/>
-                            <td class="text-center" style="border:1px solid black;"><strong>Total</strong></td>
+                            <td class="text-center"><strong>Total</strong></td>
                             <td class="text-center" style="border:1px solid black;background-color:#47612b;color:white;"><strong><span t-field="o.amount_total"/></strong></td>
                         </tr>
 

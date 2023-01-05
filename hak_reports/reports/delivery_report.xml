@@ -7,6 +7,7 @@
         <xpath expr="//div[@class='page']" position="replace">
 
             <div class="page">
+                <div class="text-center" style="font-weight:bold;font-size:25px;">Delivery Note</div>
                 <table class="table table-sm table-borderless">
                     <tr>
                         <td colspan="3">
