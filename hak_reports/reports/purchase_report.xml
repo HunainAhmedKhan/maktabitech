@@ -10,9 +10,9 @@
 
                     <table class="table table-sm table-borderless">
                         <tr>
-                            <td colspan="2" style="border:1px solid black;background-color:#47612b;color:white;"><strong>VENDOR</strong></td>
-                            <td><span>&#160;</span></td>
-                            <td colspan="3" style="border:1px solid black;background-color:#47612b;color:white;"><strong>SHIP TO</strong></td>
+                            <td colspan="2" width="30%" style="border:1px solid black;background-color:#47612b;color:white;"><strong>VENDOR</strong></td>
+                            <td width="10%"><span>&#160;</span></td>
+                            <td colspan="3" width="30%" style="border:1px solid black;background-color:#47612b;color:white;"><strong>SHIP TO</strong></td>
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -65,28 +65,36 @@
                                 <td class="text-center" style="border:1px solid black;"><span t-field="line.price_subtotal"/></td>
                             </tr>
                         </t>
-                        <tr>
-                            <td colspan="5">
-                                <span>&#160;</span>
-                            </td>
+<!--                        <tr style="border:none;">-->
+<!--                            <td colspan="5" style="border:none;">-->
+<!--                                <span>&#160;</span>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+                        <tr style="border-top:0px solid white;;">
+                            <td colspan="3" style="border:none"><span>&#160;</span></td>
+                            <td style="border-top:none;"><span>&#160;</span></td>
+                            <td class="text-center" style="border-top:0px solid white;"><strong>Subtotal</strong></td>
+                            <td class="text-center" ><span t-field="o.amount_untaxed"/></td>
                         </tr>
-                        <tr style="border-top:none;">
+                        <tr style="border-top:0px solid white;;">
                             <td colspan="3" style="border:1px solid black;background-color:grey"><strong>Remarks</strong></td>
-                            <td style="border-top:2px solid white;"></td>
-                            <td class="text-center" style="border-top:1px solid white;"><strong>Subtotal</strong></td>
-                            <td class="text-center" style="border:1px solid black;"><span t-field="o.amount_untaxed"/></td>
+                            <td style="border-top:none;"><span>&#160;</span></td>
+<!--                            <td class="text-center" style="border-top:0px solid white;"><strong>Subtotal</strong></td>-->
+<!--                            <td class="text-center" ><span t-field="o.amount_untaxed"/></td>-->
+                            <td class="text-center" ><strong>TAX</strong></td>
+                            <td class="text-center"><span t-field="o.amount_tax"/></td>
                         </tr>
                         <tr >
                             <td colspan="3" rowspan="3" style="border:1px solid black;"><span t-field="o.notes"/></td>
                             <td/>
-                            <td class="text-center" ><strong>TAX</strong></td>
-                            <td class="text-center" style="border:1px solid black;"><span t-field="o.amount_tax"/></td>
-                        </tr>
-                        <tr>
-                            <td/>
                             <td class="text-center"><strong>Total</strong></td>
                             <td class="text-center" style="border:1px solid black;background-color:#47612b;color:white;"><strong><span t-field="o.amount_total"/></strong></td>
                         </tr>
+<!--                        <tr>-->
+<!--                            <td/>-->
+<!--                            <td class="text-center"><strong>Total</strong></td>-->
+<!--                            <td class="text-center" style="border:1px solid black;background-color:#47612b;color:white;"><strong><span t-field="o.amount_total"/></strong></td>-->
+<!--                        </tr>-->
 
                     </table>
                     <div>Confirmation of Purchase Order<br/><br/>
@@ -94,22 +102,49 @@
                         From issuing and sending PORefer to terms and condition of contract.
                     </div>
                     <br/><br/><br/><br/>
-                    <table width="100%">
-                        <tr class="text-center">
-                            <td><span>&#160;</span></td>
-                            <td style="width:5%;"><span>&#160;</span></td>
-                            <td style="width:30%;"><img src="/hak_reports/static/stamp.png" class="float-left" alt="Logo" width="70%"/></td>
-                            <td style="width:5%;"><span>&#160;</span></td>
-                            <td style="width:30%;"><span>&#160;</span></td>
-                        </tr>
-                        <tr class="text-center">
-                            <td style="width:30%;border-top:1px solid black;">Prepared By:<span t-field="o.user_id.name"/></td>
-                            <td style="width:5%;"><span>&#160;</span></td>
-                            <td style="width:30%;border-top:1px solid black;">Company Stamp:</td>
-                            <td style="width:5%;"><span>&#160;</span></td>
-                            <td style="width:30%;border-top:1px solid black;">Approved By:<span t-field="o.user_id.name"/></td>
-                        </tr>
-                    </table>
+<!--                    <table width="100%">-->
+<!--                        <tr class="text-center" style="border:none;">-->
+<!--                            <td style="border:none;"><span>&#160;</span></td>-->
+<!--                            <td style="width:5%;border:none;" ><span>&#160;</span></td>-->
+<!--                            <td style="width:30%;border:none;"><img src="/hak_reports/static/stamp.png" class="float-left" alt="Logo" width="70%"/></td>-->
+<!--                            <td style="width:5%;border:none;"><span>&#160;</span></td>-->
+<!--                            <td style="width:30%;border:none;"><span>&#160;</span></td>-->
+<!--                        </tr>-->
+<!--                        <tr class="text-center" style="border:none;">-->
+<!--                            <td style="width:30%;border-top:1px solid black;">Prepared By:<span t-field="o.user_id.name"/></td>-->
+<!--                            <td style="width:5%;border:none;"><span>&#160;</span></td>-->
+<!--                            <td style="width:30%;border-top:1px solid black;">Company Stamp:</td>-->
+<!--                            <td style="width:5%; border:none;"><span>&#160;</span></td>-->
+<!--                            <td style="width:30%;border-top:1px solid black;">Approved By:<span t-field="o.user_id.name"/></td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
+                    <div class="row">
+                        <div class="col-3">
+<!--                            Prepared By:<span t-field="o.user_id.name"/>-->
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-3 text-center" >
+                            <img src="/hak_reports/static/stamp.png" class="float-left" alt="Logo" width="70%"/>
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-3">
+<!--                            <br/>-->
+<!--                            Approved By:<span t-field="o.user_id.name"/>-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 text-center" style="border-top:1px solid black;">
+                            Prepared By:<span t-field="o.user_id.name"/>
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-3 text-center" style="border-top:1px solid black;">
+                            <span>Company Stamp:</span>
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col-3 text-center" style="border-top:1px solid black;">
+                            Approved By:<span t-field="o.user_id.name"/>
+                        </div>
+                    </div>
                 </div>
             </xpath>
         </template>

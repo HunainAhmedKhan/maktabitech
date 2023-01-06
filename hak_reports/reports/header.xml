@@ -5,16 +5,21 @@
         <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
             <div class="row" style="border-bottom: 2px solid #4fc5f0;">
                 <div class="col-4 mb4">
-                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height:90px;" alt="Logo"/>
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height:110px;" alt="Logo"/>
                 </div>
-                <div class="col-4 text-center" name="company_address">
+                <div class="col-3 text-center" name="company_address">
                     <strong>
                         فاتورة أولية<br/>
                         PROFORMA INVOICE</strong>
                 </div>
-                <div class="col-4" name="company_address">
-                    <strong><div t-field="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
-                    </strong></div>
+                <div class="col-5" name="company_address" style="padding:5px;">
+<!--                    <strong>-->
+<!--                        <div t-field="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>-->
+<!--                    </strong>-->
+                    <div style="text-align:right;font-weight:bold;font-size:20px;padding:5px;">شركة مكتبي الذكي المحدودة </div>
+                    <div style="text-align:right;padding:5px;font-size:13px;">الرقم الضريبى :311272437500003</div>
+                    <div style="text-align:right;padding:5px;font-size:13px;">الرياض السليمانية طريق االمير سلطان ابن عبد العزيز</div>
+                </div>
             </div>
 
             <!--                        <div class="row">-->
