@@ -13,6 +13,7 @@ class CRMInht(models.Model):
 
     deal_ids = fields.One2many('deal.evaluation', 'crm_id', string='Questions')
     score=fields.Float("Score %",compute="compute_the_total_score")
+    contact_email=fields.Char("Email")
     delivery_date=fields.Date("Quotation Submission Date",default=lambda self: fields.Datetime.now())
     boq_received=fields.Boolean("Drawings/BOQ Received ?")
     lead_status= fields.Selection([
