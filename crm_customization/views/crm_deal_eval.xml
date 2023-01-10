@@ -15,25 +15,25 @@
                            widget="badge"/>
                 </xpath>
 
-                <xpath expr="//group[@name='lead_priority']"  position="inside">
-                        <field name="boq_received"/>
-                        <field name="delivery_date"/>
-                        <field name="lead_ready_status"  decoration-success="lead_status == '1'" decoration-danger="lead_status == '2'" widget="badge"/>
+                <xpath expr="//field[@name='user_id']"  position="after">
+                    <field name="pre_sales_user"/>
+                    <field name="boq_received"/>
+                    <field name="delivery_date"/>
+                    <field name="lead_ready_status"  decoration-success="lead_status == '1'" decoration-danger="lead_status == '2'" widget="badge"/>
                 </xpath>
-                  <xpath expr="//field[@name='partner_id']" position="attributes">
-                    <attribute name="required">1</attribute>
+
+                <xpath expr="//page[@name='lead']/group[1]/group[2]" position="inside">
+                    <field name="contact_email"/>
                 </xpath>
-                 <xpath expr="//field[@name='contact_name']" position="attributes">
-                    <attribute name="required">1</attribute>
+                <xpath expr="//page[@name='lead']/group[1]/group[2]/div/field[@name='title']" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
-                    <xpath expr="//field[@name='email_from']" position="attributes">
-                    <attribute name="required">1</attribute>
+                <xpath expr="//div[2]/h2/div[4]" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
-                     <xpath expr="//field[@name='phone']" position="attributes">
-                    <attribute name="required">1</attribute>
-                </xpath>
-                     <xpath expr="//field[@name='mobile']" position="attributes">
-                    <attribute name="required">1</attribute>
+<!--                oe_grey-->
+                <xpath expr="//div[2]/h2/div[1]/div[1]/span[2]" position="attributes">
+                    <attribute name="invisible">1</attribute>
                 </xpath>
 
 

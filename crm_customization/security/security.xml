@@ -1,33 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="0">
-        <record id="exim_bellona_credentials" model="ir.rule">
-                <field name="name">Bellona Credentials</field>
-                <field name="model_id" ref="exim_bellona.model_bellona_credentials"/>
-                <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
-                <field name="perm_read" eval="True"/>
-                <field name="perm_write" eval="True"/>
-                <field name="perm_create" eval="True"/>
-                <field name="perm_unlink" eval="True"/>
-        </record>
-        <record id="exim_bellona_shipments" model="ir.rule">
-                <field name="name">Bellona Inventory</field>
-                <field name="model_id" ref="exim_bellona.model_bellona_shipments"/>
-                <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
-                <field name="perm_read" eval="True"/>
-                <field name="perm_write" eval="True"/>
-                <field name="perm_create" eval="True"/>
-                <field name="perm_unlink" eval="True"/>
-        </record>
-        <record id="exim_bellona_materials" model="ir.rule">
-                <field name="name">Bellona Materials</field>
-                <field name="model_id" ref="exim_bellona.model_bellona_material"/>
-                <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
-                <field name="perm_read" eval="True"/>
-                <field name="perm_write" eval="True"/>
-                <field name="perm_create" eval="True"/>
-                <field name="perm_unlink" eval="True"/>
-        </record>
-    </data>    
-    
-</odoo>    
+
+<!--    <record id="base.res_partner_rule_private_group" model="ir.rule">-->
+<!--        <field name="name">res.partner.rule.private.group</field>-->
+<!--        <field name="active" eval="False"/>-->
+<!--    </record>-->
+<!--    <record id="base.res_partner_rule_private_employee" model="ir.rule">-->
+<!--        <field name="name">res.partner.rule.private.employee</field>-->
+<!--        <field name="active" eval="False"/>-->
+<!--    </record>-->
+<!--    <record model="ir.rule" id="base.res_partner_rule">-->
+<!--        <field name="name">res.partner company</field>-->
+<!--        <field name="active" eval="False"/>-->
+<!--    </record>-->
+
+
+<!--    <record id="admin_contacts_rule" model="ir.rule">-->
+<!--        <field name="name">Contacts Manager</field>-->
+<!--        <field name="model_id" ref="base.model_res_partner"/>-->
+<!--        <field name="global" eval="True"/>-->
+<!--        <field name="domain_force">[(1,'=', 1)]</field>-->
+<!--        <field name="groups" eval="[(4, ref('sales_team.group_sale_manager'))]"/>-->
+<!--    </record>-->
+
+<!--    <record id="user_contacts_own_rule" model="ir.rule">-->
+<!--        <field name="name">Contacts User</field>-->
+<!--        <field name="model_id" ref="base.model_res_partner"/>-->
+<!--        <field name="global" eval="True"/>-->
+<!--        <field name="domain_force">['|',('user_id','=', user.id), ('user_id','=', False)]</field>-->
+<!--        <field name="groups" eval="[(4, ref('sales_team.group_sale_salesman'))]"/>-->
+<!--    </record>-->
+
+
+
+
+    <!--    CRM-->
+
+    <record id="group_pre_sale" model="res.groups">
+        <field name="name">Presales User</field>
+        <field name="category_id" ref="base.module_category_sales_sales"/>
+        <field name="comment">Stage Specific rule.</field>
+    </record>
+
+    <record id="crm_pre_sale_rule" model="ir.rule">
+        <field name="name">Presales Rule</field>
+        <field name="model_id" ref="crm.model_crm_lead"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('pre_sales_user', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('crm_customization.group_pre_sale'))]"/>
+    </record>
+
+</odoo>

@@ -13,7 +13,6 @@ class CRMInht(models.Model):
 
     deal_ids = fields.One2many('deal.evaluation', 'crm_id', string='Questions')
     score=fields.Float("Score %",compute="compute_the_total_score")
-    contact_email=fields.Char("Email")
     delivery_date=fields.Date("Quotation Submission Date",default=lambda self: fields.Datetime.now())
     boq_received=fields.Boolean("Drawings/BOQ Received ?")
     lead_status= fields.Selection([
@@ -24,7 +23,37 @@ class CRMInht(models.Model):
         compute='_compute_lead_status')
 
     lead_ready_status = fields.Selection([('1', 'On Time'),('2', 'Late')], string='Lead Status')
+    pre_sales_user = fields.Many2one('res.users', string='Presales User')
+    contact_email = fields.Char("Contact Email")
 
+    @api.onchange('stage_id')
+    def onchange_stage_project(self):
+        if self.stage_id.is_won:
+            rec = self.env['project.project'].create({
+                'name': self.name,
+                'user_id': self.user_id.id,
+                'partner_id': self.partner_id.id,
+                'description': self.description,
+                'privacy_visibility': 'followers',
+            })
+
+
+    @api.model
+    def default_get(self, default_fields):
+        rec = super().default_get(default_fields)
+        deals = self.env['deal.questions'].search([])
+        val_list = []
+        for line in deals:
+            val_list.append((0, 0, {
+                'question_id': line.id,
+            }))
+        rec['deal_ids'] = val_list
+        return rec
+
+    @api.onchange("user_id")
+    def _onchange_change_partner_sales_person(self):
+        for i in self:
+            i.partner_id.user_id = i.user_id.id
 
     def _compute_lead_status(self):
         for i in self:
