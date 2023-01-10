@@ -22,15 +22,14 @@
     'version': '16.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['stock','sale','crm'],
+    'depends': ['stock', 'sale', 'crm', 'project'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        #'security/security.xml',
+        'security/security.xml',
         'views/crm_deal_eval.xml',
-
-
+        'views/pre_sales_crm.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
