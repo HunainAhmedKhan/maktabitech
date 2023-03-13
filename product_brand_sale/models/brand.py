@@ -17,9 +17,9 @@ class SaleOrderLineInh(models.Model):
 
     @api.onchange("custom_charges","ship_charges","unit_pirce","margin_percent")
     def _onchange_prices(self):
-        for i in self:
-            i.cost=i.custom_charges*i.ship_charges*i.unit_pirce
-            i.price_unit=int(i.cost+(i.cost*(i.margin_percent/100)))
+ 
+            self.cost=self.custom_charges*self.ship_charges*self.unit_pirce
+            self.price_unit=int(self.cost+(self.cost*(self.margin_percent/100)))
 
 
 class ProductBrand(models.Model):
