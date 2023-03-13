@@ -11,13 +11,17 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="after">
                     <field name="brand_id" invisible="1"/>
-                    <field name="brand_name" optional="hide"/>
-                    <field name="manufacturer" optional="hide"/>
+                    <field name="brand_name" optional="show"/>
+                    <field name="manufacturer" optional="show"/>
                     <field name="custom_charges"/>
                     <field name="ship_charges"/>
-                    <field name="unit_pirce"/>
+                    <field name="unit_price"/>
                     <field name="cost" force_save="1"/>
                     <field name="margin_percent"/>
+                </xpath>
+
+                <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="attributes">
+                        <attribute name="string">Selling Price</attribute>
                 </xpath>
             </field>
         </record>

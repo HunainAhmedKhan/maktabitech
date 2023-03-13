@@ -3,23 +3,30 @@
 
 from odoo import models, fields, api
 
+
 class SaleOrderLineInh(models.Model):
     _inherit = 'sale.order.line'
 
-    brand_id = fields.Many2one('product.brand', string='Brand',related="product_id.brand_id")
+    brand_id = fields.Many2one('product.brand', string='Brand', related="product_id.brand_id")
     brand_name = fields.Char(string='Model')
     manufacturer = fields.Char(string='Manafacturer')
-    custom_charges = fields.Float(string='Custom',default=1.15)
-    ship_charges = fields.Float(string='Shipping',default=1.12)
-    cost = fields.Float(string='Vendor Price',readonly=True)
-    margin_percent = fields.Float(string='Margin %',default=1)
-    unit_pirce = fields.Float(string='Unit Price')
+    custom_charges = fields.Float(string='Custom', default=1.15)
+    ship_charges = fields.Float(string='Shipping', default=1.12)
+    cost = fields.Float(string='Vendor Price', readonly=True)
+    margin_percent = fields.Float(string='Margin %')
+    unit_price = fields.Float(string='Unit Price')
 
-    @api.onchange("custom_charges","ship_charges","unit_pirce","margin_percent")
+    @api.onchange("custom_charges", "ship_charges", "unit_price", "margin_percent")
     def _onchange_prices(self):
- 
-            self.cost=self.custom_charges*self.ship_charges*self.unit_pirce
-            self.price_unit=int(self.cost+(self.cost*(self.margin_percent/100)))
+        self.cost = self.custom_charges * self.ship_charges * self.unit_price
+        self.price_unit = self.cost + (self.cost * (self.margin_percent / 100))
+
+    @api.onchange("price_unit")
+    def _onchange_margin(self):
+        if self.cost:
+            self.margin_percent =( (self.price_unit-self.cost)/(self.cost or 1))*100
+
+
 
 
 class ProductBrand(models.Model):
