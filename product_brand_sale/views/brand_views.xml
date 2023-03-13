@@ -9,10 +9,16 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='order_line']/tree//field[@name='sequence']" position="after">
-                    <field name="brand_id"/>
+                <xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="after">
+                    <field name="brand_id" invisible="1"/>
+                    <field name="brand_name" optional="show"/>
+                    <field name="manufacturer" optional="show"/>
+                    <field name="custom_charges"/>
+                    <field name="ship_charges"/>
+                    <field name="unit_pirce"/>
+                    <field name="cost" force_save="1"/>
+                    <field name="margin_percent"/>
                 </xpath>
-
             </field>
         </record>
 
