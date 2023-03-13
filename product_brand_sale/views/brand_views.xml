@@ -11,8 +11,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='order_line']/tree//field[@name='name']" position="after">
                     <field name="brand_id" invisible="1"/>
-                    <field name="brand_name" optional="show"/>
-                    <field name="manufacturer" optional="show"/>
+                    <field name="brand_name" optional="hide"/>
+                    <field name="manufacturer" optional="hide"/>
                     <field name="custom_charges"/>
                     <field name="ship_charges"/>
                     <field name="unit_pirce"/>
