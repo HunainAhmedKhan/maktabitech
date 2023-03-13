@@ -9,10 +9,10 @@ class SaleOrderLineInh(models.Model):
     brand_id = fields.Many2one('product.brand', string='Brand',related="product_id.brand_id")
     brand_name = fields.Char(string='Model')
     manufacturer = fields.Char(string='Manafacturer')
-    custom_charges = fields.Float(string='Custom')
-    ship_charges = fields.Float(string='Shipping')
+    custom_charges = fields.Float(string='Custom',default=1)
+    ship_charges = fields.Float(string='Shipping',default=1)
     cost = fields.Float(string='Vendor Price',readonly=True)
-    margin_percent = fields.Float(string='Margin %')
+    margin_percent = fields.Float(string='Margin %',default=1)
     unit_pirce = fields.Float(string='Unit Price')
 
     @api.onchange("custom_charges","ship_charges","unit_pirce","margin_percent")
